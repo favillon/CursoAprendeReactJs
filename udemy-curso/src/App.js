@@ -15,21 +15,33 @@ class HelloThree extends Component {
 
 class Text extends Component{
   render() {
-    const textBol = this.props.isActive ? 'Mostrar' : 'No Mostrar'
-    const mapNumber = this.props.arrayOfNumber.map(n=>n*2);
+
+    const {
+      arrayOfNumber,
+      isActive,
+      number,
+      objInfo,
+      text,
+      titleDefault,
+    } = this.props
+    const textBol = isActive ? 'Mostrar' : 'No Mostrar'
+    const mapNumber = arrayOfNumber.map(n=>n*2);
     return (
       <div>
-        <p>{this.props.text}</p>
-        <p>{this.props.number}</p>
+        <p>{text}</p>
+        <p>{number}</p>
         <p>{textBol}</p>
-        <p>{this.props.arrayOfNumber}</p>
+        <p>{arrayOfNumber}</p>
         <p>{mapNumber.join(', ')}</p>
-        <p>{this.props.objInfo.key2}</p>
+        <p>{objInfo.key2}</p>
+        <p>{titleDefault}</p>
       </div>
     ) 
   }
 }
-
+Text.defaultProps = {
+  titleDefault : 'titulo por defecto'
+}
 
 
 function App() {
