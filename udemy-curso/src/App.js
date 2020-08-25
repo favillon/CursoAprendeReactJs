@@ -43,6 +43,33 @@ Text.defaultProps = {
   titleDefault : 'titulo por defecto'
 }
 
+class Contador extends Component{
+  constructor(props){
+    super(props)
+    this.state = {contador:this.props.contadorIncial}
+    setInterval(() => {
+      this.setState({contador: this.state.contador+1})
+    }, 1000);
+  }
+  render() {    
+    return(
+      <span>El contador de visitas es : {this.state.contador}</span>
+    );
+  }
+}
+Contador.defaultProps = {
+  contadorIncial : 900
+}
+
+class Field extends Component{
+  state = {placeHolder: 'escriba aca'}
+  render(){
+    return(
+      <input type="text" placeholder={this.state.placeHolder} />
+    )
+  }
+}
+
 
 function App() {
   return (
@@ -58,6 +85,8 @@ function App() {
           isActive={false} 
           arrayOfNumber={[2,3,10]} 
           objInfo={{ key:'Valor llave', key2:'valor llave 2'}}/>
+        <Contador contadorIncial={700} />
+        <Field />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
